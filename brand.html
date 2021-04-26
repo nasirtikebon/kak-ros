@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="vue.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style1.css">
+	<style type="text/css">
+        .card {
+            background: #efefef;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            padding: 5px;
+            width: 350px;
+            float: left;
+        }
+        h3 {
+            min-height: 45px;
+        }
+        
+        </style>
+</head>
+<body>
+    <body id="page-top" >
+		<nav  class="navbar navbar-expand-lg navbar-light bg-primary" style="background-color:#191970 !important;">
+			<div class="container">
+			  <a class="navbar-brand js-scroll-trigger" href="#page-top" style="color: white; font-size: 25px;">Bag Olshop</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon" style="color: white;"></span>
+			  </button>
+			 <div class="collapse navbar-collapse" id="navbarNav">
+			 <ul class="navbar-nav ml-auto my-2 my-lg-0">
+			<li class="nav-item active">
+			 <a class="nav-link " href="Home.html" style="color: white;">Home</a>
+			 </li>
+			<li class="nav-item">
+			<a class="nav-link " href="brand.html" style="color: white;">Brand</a>
+			 </li>
+			<li class="nav-item">
+			<a class="nav-link " href="collection.html" style="color: white;">Collection</a>
+			</li>
+			 </div>
+			 <form class="form-inline my-2 my-lg-0">
+			  <button class="btn btn-succes my-2 my-sm-0" type="submit"><i class="fa fa-search" style="color: white;"></i></button>
+			</form>
+		  </div>
+		</nav>
+		<br><br>
+		<div id="app" class="container">
+    
+            <book v-for="book in books" :key="book.id" :book="book" @selected="selectedBook = $event"></book>
+        </div>
+        <script type="text/javascript">
+       var BookComponent ={
+           data (){
+               return {
+                   classCard: 'card'
+               }
+           },
+           props: ['book'],
+           template:`
+                    <div :class="classCard"> 
+                    <h3> {{ book.title }} </h3> 
+                    <img :src="book.image" style="height:300px"> 
+                    <p v-html="book.description"></p>
+                    </div>
+                    `
+       }
+       var vm = new Vue ({
+           el: '#app',
+           components : {
+               'book' : BookComponent,
+           },
+           data: {
+               books : [
+                   {
+                    id: 12,
+                            title: 'Tas Selempang Wanita Kekinian Terbaru Stylish Murah Lucu',
+                            description: 'Tas Selempang Wanita Kekinian Terbaru Stylish Murah Lucu ,<br> Detail Produk: <br> *Bahan : Kanvas Halu (condura) <br>*Ukuran : 30x27 <br>*Berat : 150 gram <br>*1 kg masuk 8 pcs tas ',
+                            authors: 'jhon Doe',
+                            publish_year: 2019,
+                            price: 10000,
+                            image: 'gambar3.jpg'
+                   },
+                   {
+                            id: 13,
+                            title:'SEPARI_STORE MERISCA TAS SELEMPANG',
+                            description: 'HAPPY SHOPPING LADIES / MAN <br> SELAMAT DATANG DI TOKO KAMI SEPARI_STORE <br> Spesifikasi : Tas Selempang <br> Material : kulit Sintetis <br> Ukuran : 22x20x10',
+                            authors: 'jhon Doe',
+                            publish_year: 2019,
+                            price: 5000,
+                            image: 'gambar4.jpg'
+                        },
+						{
+                            id: 13,
+                            title:'SLING BAG IMPORT DS1882B TAS SELEMPANG TALI RANTAI ',
+                            description: 'TAS SELEMPANG WANITA SLING BAG IMPORT DS1882B TAS SELEMPANG TALI RANTAI MODIS [BISA COD] <br>DESKRIPSI PRODUK : <br>MATERIAL : KULIT SINTETIS / PU <br>SIZE     : L22XH16XW6CM <br>WEIGHT   : 500 GR <br>COLOR    : 3 VARIAN',
+                            authors: 'jhon Doe',
+                            publish_year: 2019,
+                            price: 5000,
+                            image: 'gambar5.jpg'
+                        },
+                      
+               ]
+           }
+       }) 
+	</script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+			</body>
+
+</html>
